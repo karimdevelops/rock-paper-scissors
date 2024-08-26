@@ -1,6 +1,10 @@
 let choices = ["rock", "paper", "scissors"];
 let totalChoices = choices.length;
 let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
+
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * totalChoices);
@@ -27,5 +31,3 @@ function checkChoice(choice) {
     }
   }
 }
-
-console.log(getHumanChoice());
