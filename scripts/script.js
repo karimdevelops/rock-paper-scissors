@@ -13,7 +13,8 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let choice = prompt("Enter a choice (rock, paper, scissors)").toLowerCase();
+  let choice = prompt("Enter a choice (rock, paper, scissors)");
+  choice = choice == null ? " " : choice.toLowerCase();
   let choiceExists = checkChoice(choice);
   while (!choiceExists) {
     choice = prompt(
