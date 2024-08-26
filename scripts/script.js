@@ -1,8 +1,5 @@
 let choices = ["rock", "paper", "scissors"];
 let totalChoices = choices.length;
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -31,3 +28,42 @@ function checkChoice(choice) {
     }
   }
 }
+
+function playRound(humanChoice, computerChoice) {
+  switch (humanChoice) {
+    case computerChoice:
+      console.log(`Draw! ${humanChoice} does not beat ${computerChoice}.`);
+      break;
+    case "rock":
+      if (computerChoice == "scissors") {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        humanScore++;
+      } else if (computerChoice == "paper") {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        computerScore++;
+      }
+      break;
+    case "paper":
+      if (computerChoice == "rock") {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        humanScore++;
+      } else if (computerChoice == "scissors") {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        computerScore++;
+      }
+      break;
+    case "scissors":
+      if (computerChoice == "paper") {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        humanScore++;
+      } else if (computerChoice == "rock") {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        computerScore++;
+      }
+      break;
+  }
+}
+
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
+playRound(humanChoice, computerChoice);
