@@ -1,8 +1,10 @@
 let choices = ["rock", "paper", "scissors"];
 let totalChoices = choices.length;
 let totalRounds = 5;
+
 let humanScore = 0;
 let computerScore = 0;
+
 let computerChoice;
 let humanChoice;
 
@@ -71,7 +73,6 @@ function playRound(humanChoice, computerChoice) {
 function playGame() {
   for (let i = 0; i < totalRounds; i++) {
     computerChoice = getComputerChoice();
-    console.log(computerChoice);
     humanChoice = getHumanChoice();
     playRound(humanChoice, computerChoice);
   }
