@@ -1,7 +1,10 @@
 let choices = ["rock", "paper", "scissors"];
 let totalChoices = choices.length;
+let totalRounds = 5;
 let humanScore = 0;
 let computerScore = 0;
+let computerChoice;
+let humanChoice;
 
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * totalChoices);
@@ -64,6 +67,20 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
-playRound(humanChoice, computerChoice);
+function playGame() {
+  for (let i = 0; i < totalRounds; i++) {
+    computerChoice = getComputerChoice();
+    console.log(computerChoice);
+    humanChoice = getHumanChoice();
+    playRound(humanChoice, computerChoice);
+  }
+  console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
+  if (humanScore == computerScore) {
+    console.log("Draw.");
+  } else {
+    let winner = humanScore > computerScore ? "You won!" : "You lost...";
+    console.log(winner);
+  }
+}
+
+playGame();
