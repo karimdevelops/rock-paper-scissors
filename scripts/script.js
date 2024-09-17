@@ -1,4 +1,5 @@
 let choices = ["rock", "paper", "scissors"];
+let userChoices = document.querySelector("#userChoices");
 let totalChoices = choices.length;
 let totalRounds = 5;
 
@@ -8,22 +9,15 @@ let computerScore = 0;
 let computerChoice;
 let humanChoice;
 
+userChoices.addEventListener("click", (choice) => {
+  humanChoice = choice.target.id;
+  computerChoice = getComputerChoice();
+  playGame(humanChoice, computerChoice);
+});
+
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * totalChoices);
   let choice = choices[randomChoice];
-  return choice;
-}
-
-function getHumanChoice() {
-  let choice = prompt("Enter a choice (rock, paper, scissors)");
-  choice = choice == null ? " " : choice.toLowerCase();
-  let choiceExists = checkChoice(choice);
-  while (!choiceExists) {
-    choice = prompt(
-      "Invalid choice!\nEnter a choice again (rock, paper, scissors).",
-    );
-    choiceExists = checkChoice(choice);
-  }
   return choice;
 }
 
@@ -70,19 +64,17 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-function playGame() {
-  for (let i = 0; i < totalRounds; i++) {
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
+function playGame(humanChoice, computerChoice) {
+  if (humanScore < 5 && computerScore < 5) {
     playRound(humanChoice, computerChoice);
+    console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
   }
-  console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
-  if (humanScore == computerScore) {
+  /*if (humanScore == computerScore) {
     console.log("Draw.");
   } else {
     let winner = humanScore > computerScore ? "You won!" : "You lost...";
     console.log(winner);
-  }
+  }*/
 }
 
 //playGame();
