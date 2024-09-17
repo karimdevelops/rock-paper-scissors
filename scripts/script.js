@@ -1,4 +1,5 @@
 let choices = ["rock", "paper", "scissors"];
+let score = document.querySelector("#score");
 let userChoices = document.querySelector("#userChoices");
 let totalChoices = choices.length;
 let totalRounds = 5;
@@ -67,7 +68,7 @@ function playRound(humanChoice, computerChoice) {
 function playGame(humanChoice, computerChoice) {
   if (humanScore < 5 && computerScore < 5) {
     playRound(humanChoice, computerChoice);
-    console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
+    score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
   }
   /*if (humanScore == computerScore) {
     console.log("Draw.");
