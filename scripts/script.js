@@ -1,3 +1,8 @@
+let menu = document.querySelector(".menu");
+let menuButton = document.querySelector("#menuBtn");
+
+let main = document.querySelector(".main");
+
 let choices = ["rock", "paper", "scissors"];
 let totalChoices = choices.length;
 
@@ -10,6 +15,11 @@ let computerScore = 0;
 
 let computerChoice;
 let humanChoice;
+
+menuButton.addEventListener("click", () => {
+  menu.remove();
+  main.classList.toggle("inactive");
+});
 
 userChoices.addEventListener("click", (choice) => {
   humanChoice = choice.target.id;
