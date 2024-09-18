@@ -68,7 +68,8 @@ button {
   }
 }
 
-button:hover {
+button:hover,
+button:active {
   color: white;
   box-shadow: inset 20rem 0 0 0 #ca6702;
   cursor: pointer;
@@ -89,8 +90,8 @@ div.footer {
 }
 
 a {
-  color: white;
   text-decoration: none;
+  color: #e9d8a6;
 }
 
 a:hover {
@@ -98,5 +99,7 @@ a:hover {
 }
 
 div.footer svg {
-  vertical-align: top;
+  vertical-align: bottom;
+  font-size: 2rem;
+  font-weight: 900;
 }
