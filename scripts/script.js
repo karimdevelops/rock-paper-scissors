@@ -74,12 +74,12 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function winner() {
-  finalResult.style.color = "cyan";
+  finalResult.style.color = "#005f73";
   return "You win!";
 }
 
 function loser() {
-  finalResult.style.color = "red";
+  finalResult.style.color = "#AE2012";
   return "You lose!";
 }
 
@@ -90,7 +90,9 @@ function playGame(humanChoice, computerChoice) {
     resultText = playRound(humanChoice, computerChoice);
     score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
     result.textContent = "Result: " + resultText;
-  } else if (humanScore == 5 || computerScore == 5) {
+    console.log(humanScore, computerScore);
+  }
+  if (humanScore == 5 || computerScore == 5) {
     finalText = humanScore > computerScore ? winner() : loser();
     finalResult.textContent = finalText;
     humanScore = 0;
