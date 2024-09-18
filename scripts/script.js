@@ -21,8 +21,10 @@ menuButton.addEventListener("click", startGame);
 
 userChoices.addEventListener("click", (choice) => {
   humanChoice = choice.target.id;
-  computerChoice = getComputerChoice();
-  playGame(humanChoice, computerChoice);
+  if (choices.includes(humanChoice)) {
+    computerChoice = getComputerChoice();
+    playGame(humanChoice, computerChoice);
+  }
 });
 
 function startGame() {
@@ -68,8 +70,6 @@ function playRound(humanChoice, computerChoice) {
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
       }
       break;
-    default:
-      return "";
   }
 }
 
