@@ -9,6 +9,7 @@ body {
   font-size: 5rem;
   font-weight: 900;
   font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
 }
 
 div.menu,
@@ -21,7 +22,7 @@ div.main {
 
 div.menu {
   min-height: 100vh;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 div.main {
@@ -36,6 +37,10 @@ div.inactive {
 
 h3 {
   font-size: 1.5rem;
+}
+
+div#result {
+  color: #ca6702;
 }
 
 button {
