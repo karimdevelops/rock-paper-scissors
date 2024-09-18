@@ -97,9 +97,13 @@ function playGame(humanChoice, computerChoice) {
     finalResult.textContent = finalText;
     humanScore = 0;
     computerScore = 0;
-    result.textContent = "Result: ";
-    score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
-    startGame();
+    userChoices.style["pointer-events"] = "none";
+    setTimeout(() => {
+      result.textContent = "Result: ";
+      score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
+      userChoices.style["pointer-events"] = "all";
+      startGame();
+    }, 1000);
   }
 }
 
