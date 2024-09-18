@@ -82,6 +82,10 @@ svg.icon {
   margin-left: 2rem;
 }
 
+svg.icon:hover {
+  border-style: solid;
+}
+
 div.footer {
   background-color: #ca6702;
   font-size: 1.5rem;
