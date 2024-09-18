@@ -16,16 +16,19 @@ let computerScore = 0;
 let computerChoice;
 let humanChoice;
 
-menuButton.addEventListener("click", () => {
-  menu.remove();
-  main.classList.toggle("inactive");
-});
+menuButton.addEventListener("click", startGame);
 
 userChoices.addEventListener("click", (choice) => {
   humanChoice = choice.target.id;
   computerChoice = getComputerChoice();
   playGame(humanChoice, computerChoice);
 });
+
+function startGame() {
+  menu.classList.toggle("inactive");
+  main.classList.toggle("inactive");
+  menuButton.textContent = "Restart";
+}
 
 function getComputerChoice() {
   let randomChoice = Math.floor(Math.random() * totalChoices);
@@ -64,6 +67,8 @@ function playRound(humanChoice, computerChoice) {
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
       }
       break;
+    default:
+      return "";
   }
 }
 
@@ -72,6 +77,12 @@ function playGame(humanChoice, computerChoice) {
     resultText = playRound(humanChoice, computerChoice);
     score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
     result.textContent = "Result: " + resultText;
+  } else if (humanScore == 5 || computerScore == 5) {
+    humanScore = 0;
+    computerScore = 0;
+    result.textContent = "Result: ";
+    score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
+    startGame();
   }
 }
 
