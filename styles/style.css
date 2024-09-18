@@ -14,15 +14,16 @@ body {
 }
 
 div.menu,
-div.main {
+div.main,
+div.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 90vh;
 }
 
 div.menu {
-  min-height: 100vh;
   gap: 1rem;
   animation-name: slidein;
   animation-duration: 0.5s;
@@ -30,7 +31,6 @@ div.menu {
 
 div.main {
   font-size: 2rem;
-  min-height: 100vh;
   gap: 2rem;
 }
 
@@ -77,4 +77,24 @@ svg.icon {
   font-size: 10rem;
   cursor: pointer;
   margin-left: 2rem;
+}
+
+div.footer {
+  background-color: #ca6702;
+  font-size: 1.5rem;
+  font-weight: 400;
+  min-height: 10vh;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+div.footer svg {
+  vertical-align: top;
 }
