@@ -1,5 +1,6 @@
 let menu = document.querySelector(".menu");
 let menuButton = document.querySelector("#menuBtn");
+let finalResult = document.querySelector("#finalResult");
 
 let main = document.querySelector(".main");
 
@@ -72,12 +73,26 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+function winner() {
+  finalResult.style.color = "cyan";
+  return "You win!";
+}
+
+function loser() {
+  finalResult.style.color = "red";
+  return "You lose!";
+}
+
 function playGame(humanChoice, computerChoice) {
+  let resultText;
+  let finalText;
   if (humanScore < 5 && computerScore < 5) {
     resultText = playRound(humanChoice, computerChoice);
     score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
     result.textContent = "Result: " + resultText;
   } else if (humanScore == 5 || computerScore == 5) {
+    finalText = humanScore > computerScore ? winner() : loser();
+    finalResult.textContent = finalText;
     humanScore = 0;
     computerScore = 0;
     result.textContent = "Result: ";
