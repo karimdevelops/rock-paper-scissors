@@ -89,8 +89,7 @@ function playGame(humanChoice, computerChoice) {
   if (humanScore < 5 && computerScore < 5) {
     resultText = playRound(humanChoice, computerChoice);
     score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
-    result.textContent = "Result: " + resultText;
-    console.log(humanScore, computerScore);
+    result.textContent = resultText;
   }
   if (humanScore == 5 || computerScore == 5) {
     finalText = humanScore > computerScore ? winner() : loser();
@@ -99,7 +98,7 @@ function playGame(humanChoice, computerChoice) {
     computerScore = 0;
     userChoices.style["pointer-events"] = "none";
     setTimeout(() => {
-      result.textContent = "Result: ";
+      result.textContent = "...";
       score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
       userChoices.style["pointer-events"] = "all";
       startGame();
