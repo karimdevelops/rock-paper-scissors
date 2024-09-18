@@ -103,7 +103,7 @@ function playGame(humanChoice, computerChoice) {
       score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
       userChoices.style["pointer-events"] = "all";
       startGame();
-    }, 1000);
+    }, 500);
   }
 }
 
