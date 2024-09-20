@@ -41,7 +41,7 @@ div.inactive {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 3rem;
 }
 
 div#result {
@@ -77,7 +77,7 @@ button:active {
 
 svg.icon {
   border: 5px dashed darkslategray;
-  font-size: 10rem;
+  font-size: 12rem;
   cursor: pointer;
   margin-left: 2rem;
 }

@@ -7,23 +7,27 @@ let main = document.querySelector(".main");
 let choices = ["rock", "paper", "scissors"];
 let totalChoices = choices.length;
 
-let score = document.querySelector("#score");
 let userChoices = document.querySelector("#userChoices");
 let result = document.querySelector("#result");
 
-let humanScore = 0;
+let userScore = 0;
 let computerScore = 0;
 
+let userScoreSpan = document.querySelector("#userScore");
+userScoreSpan.style.color = "#005f73";
+let computerScoreSpan = document.querySelector("#computerScore");
+computerScoreSpan.style.color = "#AE2012";
+
 let computerChoice;
-let humanChoice;
+let userChoice;
 
 menuButton.addEventListener("click", startGame);
 
 userChoices.addEventListener("click", (choice) => {
-  humanChoice = choice.target.id;
-  if (choices.includes(humanChoice)) {
+  userChoice = choice.target.id;
+  if (choices.includes(userChoice)) {
     computerChoice = getComputerChoice();
-    playGame(humanChoice, computerChoice);
+    playGame(userChoice, computerChoice);
   }
 });
 
@@ -38,36 +42,36 @@ function getComputerChoice() {
   let choice = choices[randomChoice];
   return choice;
 }
-function playRound(humanChoice, computerChoice) {
-  switch (humanChoice) {
+function playRound(userChoice, computerChoice) {
+  switch (userChoice) {
     case computerChoice:
-      return `Draw! ${humanChoice} does not beat ${computerChoice}.`;
+      return `Draw! ${userChoice} does not beat ${computerChoice}.`;
       break;
     case "rock":
       if (computerChoice == "scissors") {
-        humanScore++;
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
+        userScore++;
+        return `You win! ${userChoice} beats ${computerChoice}.`;
       } else if (computerChoice == "paper") {
         computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+        return `You lose! ${computerChoice} beats ${userChoice}.`;
       }
       break;
     case "paper":
       if (computerChoice == "rock") {
-        humanScore++;
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
+        userScore++;
+        return `You win! ${userChoice} beats ${computerChoice}.`;
       } else if (computerChoice == "scissors") {
         computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+        return `You lose! ${computerChoice} beats ${userChoice}.`;
       }
       break;
     case "scissors":
       if (computerChoice == "paper") {
-        humanScore++;
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
+        userScore++;
+        return `You win! ${userChoice} beats ${computerChoice}.`;
       } else if (computerChoice == "rock") {
         computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+        return `You lose! ${computerChoice} beats ${userChoice}.`;
       }
       break;
   }
@@ -83,23 +87,25 @@ function loser() {
   return "You lose!";
 }
 
-function playGame(humanChoice, computerChoice) {
+function playGame(userChoice, computerChoice) {
   let resultText;
   let finalText;
-  if (humanScore < 5 && computerScore < 5) {
-    resultText = playRound(humanChoice, computerChoice);
-    score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
+  if (userScore < 5 && computerScore < 5) {
+    resultText = playRound(userChoice, computerChoice);
+    userScoreSpan.textContent = userScore;
+    computerScoreSpan.textContent = computerScore;
     result.textContent = resultText;
   }
-  if (humanScore == 5 || computerScore == 5) {
-    finalText = humanScore > computerScore ? winner() : loser();
+  if (userScore == 5 || computerScore == 5) {
+    finalText = userScore > computerScore ? winner() : loser();
     finalResult.textContent = finalText;
-    humanScore = 0;
+    userScore = 0;
     computerScore = 0;
     userChoices.style["pointer-events"] = "none";
     setTimeout(() => {
       result.textContent = "...";
-      score.textContent = `User score: ${humanScore} - Computer score: ${computerScore}`;
+      userScoreSpan.textContent = userScore;
+      computerScoreSpan.textContent = computerScore;
       userChoices.style["pointer-events"] = "all";
       startGame();
     }, 500);
